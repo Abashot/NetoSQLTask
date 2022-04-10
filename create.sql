@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS SingerGenre (
 CREATE TABLE IF NOT EXISTS Album (
 	id serial PRIMARY KEY,
 	title varchar(80) NOT NULL,
-	release_date date
+	release_date integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS SingerAlbum (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS Track (
 CREATE TABLE IF NOT EXISTS Collection (
 	id serial PRIMARY KEY,
 	title varchar(80) NOT NULL,
-	release_date date
+	release_date integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS CollectionTrack (
