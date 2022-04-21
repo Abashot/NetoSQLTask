@@ -21,7 +21,10 @@ INSERT INTO Singer
 	
 INSERT INTO Singer
 	VALUES(8, 'Ludacris');
-	
+
+INSERT INTO Singer
+	VALUES(9, 'DMX');
+		
 INSERT INTO Genre 
 	VALUES(1, 'Rock');
 	
@@ -36,6 +39,9 @@ INSERT INTO Genre
 	
 INSERT INTO Genre 
 	VALUES(5, 'R&B');
+
+INSERT INTO Genre
+	VALUES(6, 'Hip-Hop');
 
 INSERT INTO Album 
 	VALUES(1, 'Clockwork Menagerie', 2002); 
@@ -60,6 +66,9 @@ INSERT INTO Album
 	
 INSERT INTO Album 
 	VALUES(8, 'The Red Light District', 2004);
+
+INSERT INTO Album
+	VALUES(9, 'The Definition of X, Pick Of The Litter', 2007);	
 
 INSERT INTO Track 
 	VALUES(1, 'Remegio', 410, 1);
@@ -108,6 +117,9 @@ INSERT INTO Track
 	
 INSERT INTO Track 
 	VALUES(16, 'Pass Out', 261, 8);
+
+INSERT INTO Track 
+	VALUES(17, 'Party Up', 272, 9);
 	
 INSERT INTO Collection  
 	VALUES(1, 'Большая коллекция', 2014);
@@ -165,6 +177,9 @@ INSERT INTO SingerGenre(singer_id, genre_id)
 	
 INSERT INTO SingerGenre(singer_id, genre_id)
 	VALUES(8, 5);
+
+INSERT INTO SingerGenre(singer_id, genre_id)
+	VALUES(9, 6);
 	
 INSERT INTO SingerAlbum(singer_id, album_id)
 	VALUES(1, 1);
@@ -189,6 +204,9 @@ INSERT INTO SingerAlbum(singer_id, album_id)
 	
 INSERT INTO SingerAlbum(singer_id, album_id)
 	VALUES(8, 8);
+
+INSERT INTO SingerAlbum(singer_id, album_id)
+	VALUES(9, 9);
 	
 INSERT INTO CollectionTrack(collection_id, track_id)
 	VALUES(1, 9);
@@ -216,3 +234,6 @@ INSERT INTO CollectionTrack(collection_id, track_id)
 	
 INSERT INTO CollectionTrack(collection_id, track_id)
 	VALUES(9, 15);
+
+INSERT INTO CollectionTrack(collection_id, track_id)
+	VALUES(8, 17);
