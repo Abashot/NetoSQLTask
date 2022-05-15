@@ -8,11 +8,12 @@ def count_singer_in_genre(connection):
     """).fetchall()
     print(f'Количество исполнителей в жанре: {res}\n')
 
-def count_traсks_in_albums_2020_2021(connection):
+def count_traсks_in_albums_2019_2020(connection):
     res = connection.execute("""
-    SELECT COUNT(title) FROM Track
-        WHERE album_id = (SELECT id FROM Album
-        WHERE release_date = 2020 OR release_date = 2019);
+    SELECT COUNT(track.id) FROM Track 
+        LEFT JOIN Album ON track.album_id = album.id
+        WHERE release_date IN ('2019', '2020')
+        GROUP BY release_date;
     """).fetchall()
     print(f'Количество треков, вошедших в альбомы 2019-2020 годов: {res}\n')
 
@@ -26,10 +27,10 @@ def count_tracks_average_duration(connection):
 
 def count_singer_without_album_2020(connection):
     res = connection.execute("""
-    SELECT alias FROM Singer
-        JOIN SingerAlbum ON singer.id = SingerAlbum.singer_id
-        JOIN album ON SingerAlbum.album_id = album.id
-        WHERE release_date != 2020;
+    SELECT DISTINCT singer.alias FROM Singer
+        LEFT JOIN SingerAlbum ON singer.id = SingerAlbum.singer_id
+        LEFT JOIN Album ON SingerAlbum.album_id = album.id
+        WHERE not album.release_date = 2020
     """).fetchall()
     print(f'Исполнители, не выпустившие альбомы в 2020 году: {res}\n')
 
@@ -95,7 +96,7 @@ if __name__ == '__main__':
     connection = engine.connect()
 
     count_singer_in_genre(connection)
-    count_traсks_in_albums_2020_2021(connection)
+    count_traсks_in_albums_2019_2020(connection)
     count_tracks_average_duration(connection)
     count_singer_without_album_2020(connection)
     find_ludacris_in_collections(connection)
